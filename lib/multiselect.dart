@@ -1,9 +1,7 @@
 library multiselect;
 
-
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
-
 
 class _TheState {}
 
@@ -29,7 +27,12 @@ class _SelectRow extends StatelessWidget {
   final bool selected;
   final String text;
 
-  const _SelectRow({Key? key, required this.onChange, required this.selected, required this.text}) : super(key: key);
+  const _SelectRow(
+      {Key? key,
+      required this.onChange,
+      required this.selected,
+      required this.text})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -129,14 +132,14 @@ class DropDownMultiSelect<T> extends StatefulWidget {
   _DropDownMultiSelectState createState() => _DropDownMultiSelectState<T>();
 }
 
-class _DropDownMultiSelectState<TState> extends State<DropDownMultiSelect<TState>> {
+class _DropDownMultiSelectState<TState>
+    extends State<DropDownMultiSelect<TState>> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Stack(
-        alignment: Alignment.centerLeft,
+        alignment: AlignmentDirectional.centerStart,
         children: [
-         
           Container(
             child: DropdownButtonFormField<TState>(
               hint: widget.hint,
@@ -156,7 +159,9 @@ class _DropDownMultiSelectState<TState> extends State<DropDownMultiSelect<TState
               isDense: widget.isDense,
               onChanged: widget.enabled ? (x) {} : null,
               isExpanded: false,
-              value: widget.selectedValues.length > 0 ? widget.selectedValues[0] : null,
+              value: widget.selectedValues.length > 0
+                  ? widget.selectedValues[0]
+                  : null,
               selectedItemBuilder: (context) {
                 return widget.options
                     .map((e) => DropdownMenuItem(
@@ -216,7 +221,12 @@ class _DropDownMultiSelectState<TState> extends State<DropDownMultiSelect<TState
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20),
                     child: Text(
-                      widget.selectedValues.length > 0 ? widget.selectedValues.map((e) => e.toString()).reduce((a, b) => a.toString() + ' , ' + b.toString()) : widget.whenEmpty ?? '',
+                      widget.selectedValues.length > 0
+                          ? widget.selectedValues
+                              .map((e) => e.toString())
+                              .reduce(
+                                  (a, b) => a.toString() + ' , ' + b.toString())
+                          : widget.whenEmpty ?? '',
                       style: widget.selected_values_style,
                     ),
                   ))),
