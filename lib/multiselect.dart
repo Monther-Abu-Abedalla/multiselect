@@ -219,7 +219,7 @@ class _DropDownMultiSelectState<TState>
                           : EdgeInsets.symmetric(horizontal: 10)
                       : EdgeInsets.symmetric(horizontal: 20),
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       widget.selectedValues.length > 0
                           ? widget.selectedValues
